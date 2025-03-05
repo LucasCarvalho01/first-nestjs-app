@@ -1,15 +1,18 @@
-import { Controller, Get, Post, Req, Header, Param, Body, Query } from '@nestjs/common';
+import { Controller, Get, Post, Req, Header, Param, Body, Query, Delete } from '@nestjs/common';
 import { Request } from 'express'
-import { CreateCatDto } from 'src/DTOs/create-cat.dto';
+import { CreateCatDto } from 'src/cats/DTOs/create-cat.dto';
+import { CatsService } from './cats.services';
+import { Cat } from 'src/cats/interfaces/cat.interface';
 
 @Controller('cats')
 export class CatsController {
+  constructor(private readonly catsService: CatsService) {}
+
   @Get()
-  findAll(@Req() request: Request): string {
-    return 'This action returns all cats';
+  findAll(@Req() request: Request): Cat[] {
+    return this.catsService.findAll();
   }
 
-  
   @Get()
   async findAllWithQueryParams(@Query('age') age: number, @Query('breed') breed: string) {
     return `This action returns all cats filtered by age: ${age} and breed: ${breed}`;
@@ -23,8 +26,12 @@ export class CatsController {
 
   @Post()
   @Header('Cache-Control', 'no-store')
-  async create(@Body() CreateCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+  async create(@Body() createCatDto: CreateCatDto) {
+    return this.catsService.create(createCatDto);
   }
 
+  @Delete(':id')
+  async delete(@Param('id') id: string) {
+    return `This action removes a #${id} cat`;
+  }
 }
