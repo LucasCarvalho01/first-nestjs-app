@@ -1,10 +1,13 @@
-import { Controller, Get, Post, Req, Header, Param, Body, Query, Delete, HttpException, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Req, Header, Param, Body, Query, Delete, HttpException, ParseIntPipe, ParseUUIDPipe, UseInterceptors } from '@nestjs/common';
 import { Request } from 'express'
 import { CreateCatDto } from 'src/cats/DTOs/create-cat.dto';
 import { CatsService } from './cats.services';
 import { Cat } from 'src/cats/interfaces/cat.interface';
+import { UUID } from 'node:crypto';
+import { LoggingInterceptor } from 'src/interceptors/logging.interceptor';
 
 @Controller('cats')
+@UseInterceptors(LoggingInterceptor)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
@@ -19,7 +22,8 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id', ParseIntPipe) id: number | string): string {
+  // findOne(@Param('id', new ParseUUIDPipe({version: '4'})) id: string | UUID): string {   // Forma de definir a versão do UUID
+  findOne(@Param('id', ParseUUIDPipe) id: string | UUID): string {
     console.log(id);
     return `This action returns a #${id} cat`;
 }

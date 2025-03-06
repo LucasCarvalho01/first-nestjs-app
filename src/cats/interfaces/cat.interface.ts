@@ -1,5 +1,7 @@
+import { UUID } from "node:crypto";
+
 export interface Cat {
-  id: number;
+  id: UUID;
   name: string;
   age: number;
   breed: string;

@@ -1,7 +1,7 @@
 GET http://localhost:3000/cats
 ###
 
-GET http://localhost:3000/cats/1
+GET http://localhost:3000/cats/36b8f84d-df4e-4d49-b662-bcde71a8764f
 
 ###
 
@@ -12,6 +12,15 @@ Content-Type: application/json
     "name": "Cat 1",
     "age": 1,
     "breed": "Breed 1"
+}
+###
+
+POST http://localhost:3000/cats
+Content-Type: application/json
+
+{
+    "name": "Cat 2",
+    "age": 2
 }
 
 ###
