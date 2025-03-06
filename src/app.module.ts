@@ -3,9 +3,12 @@ import { CatsModule } from './cats/cats.module';
 import { logger } from './middlewares/logger.middleware';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
+import { UsersModule } from './users/users.module';
+import { config } from './ormconfig';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Module({
-  imports: [CatsModule],
+  imports: [CatsModule, UsersModule, TypeOrmModule.forRoot(config)],
   providers: [
     {
       provide: APP_INTERCEPTOR,
