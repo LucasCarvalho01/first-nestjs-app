@@ -34,11 +34,14 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "mais uma pessoa",
+    "name": "testando jwt",
     "age": 100,
-    "email": "myemail@email.com"
+    "email": "myemail@email.com",
+    "password": "123456"
 }
 ###
 GET http://localhost:3000/users
 ###
 DELETE http://localhost:3000/users/3202f141-e0eb-4356-ad22-2561c8ad3e79
+###
+POST http://localhost:3000/

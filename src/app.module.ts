@@ -6,9 +6,10 @@ import { TimeoutInterceptor } from './interceptors/timeout.interceptor';
 import { UsersModule } from './users/users.module';
 import { config } from './ormconfig';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
-  imports: [CatsModule, UsersModule, TypeOrmModule.forRoot(config)],
+  imports: [CatsModule, UsersModule, TypeOrmModule.forRoot(config), AuthModule],
   providers: [
     {
       provide: APP_INTERCEPTOR,
