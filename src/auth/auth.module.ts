@@ -18,8 +18,4 @@ import { jwtConstants } from './constants';
   providers: [AuthService],
   exports: [AuthService]
 })
-export class AuthModule {
-  constructor() {
-    console.log(process.env.JWT_SECRET);
-  }
-}
+export class AuthModule {}

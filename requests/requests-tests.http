@@ -34,14 +34,23 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "name": "testando jwt",
+    "name": "olasdfasd",
     "age": 100,
     "email": "myemail@email.com",
-    "password": "123456"
+    "password": "sadfa"
 }
 ###
 GET http://localhost:3000/users
 ###
 DELETE http://localhost:3000/users/3202f141-e0eb-4356-ad22-2561c8ad3e79
 ###
-POST http://localhost:3000/
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+    "id": "6269a3a2-e8ec-499a-baa3-6e210849eaad",
+    "pwd": "123456"
+}
+###
+GET http://localhost:3000/auth/profile
+Authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MjY5YTNhMi1lOGVjLTQ5OWEtYmFhMy02ZTIxMDg0OWVhYWQiLCJ1c2VybmFtZSI6InRlc3RhbmRvIGp3dCIsImlhdCI6MTc0MTM3MjMxOSwiZXhwIjoxNzQxMzcyMzc5fQ._Etz8QV24GxltMusZ3kb8VSctj7mQYn3zBDLTkMGYzg'
