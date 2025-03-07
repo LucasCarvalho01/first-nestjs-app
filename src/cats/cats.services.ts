@@ -26,13 +26,4 @@ export class CatsService {
     }
     return cat;
   }
-  // delete(id: string) {
-  //   let idNumber: number;
-  //   try {
-  //     idNumber = parseInt(id);
-  //   } catch (error) {
-  //     throw new HttpException 'Invalid ID';
-  //   }
-  //   this.cats.splice(id, 1);
-  // }
 }
